@@ -8,7 +8,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Denniskemboi\\LaravelRestHelper\\": "src/"
+      "Denniskemboi\\LaravelRestHelper\\": "src/Controllers"
     }
   },
   "authors": [
