@@ -27,7 +27,7 @@ class ApiController extends Controller
                             $query = $query::with($with);
                         }
                         $data['data'] = $query->get();
-                    }
+                    }else $data['data'] = $this->model::all();
                 }else $data['data'] = $this->model::with($this->with)->get();
             }else $data['data'] = $this->model::all();
             
