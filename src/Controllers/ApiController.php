@@ -2,6 +2,8 @@
 
 namespace Controllers;
 
+require_once("./Contoller.php");
+
 use Illuminate\Http\Request;
 
 class ApiController extends Controller
