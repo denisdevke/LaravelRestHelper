@@ -1,6 +1,6 @@
 <?php
 
-namespace Controllers;
+namespace Denniskemboi\LaravelRestHelper\Controllers;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
