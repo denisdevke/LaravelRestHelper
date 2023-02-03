@@ -1,8 +1,6 @@
 <?php
 
-namespace Controllers;
-
-require_once("./Contoller.php");
+namespace Denniskemboi\LaravelRestHelper\Controllers;
 
 use Illuminate\Http\Request;
 
