@@ -4,14 +4,16 @@ namespace Controllers;
 
 use Illuminate\Http\Request;
 
-class CropPestCotrolController extends Controller
+class ApiController extends Controller
 {
      protected $model = null;
-     protected $with=["crop"];
+     protected $with=[];
 
     public function __construct(){
-        $this->model = CropsPestsControl::class;
+        
     }
+
+
     // list all
     public function index()
     {
