@@ -9,7 +9,10 @@
   "autoload": {
     "psr-4": {
       "Denniskemboi\\LaravelRestHelper\\": "src/Controllers"
-    }
+    },
+    "files": [
+      "src/Controllers/ApiController.php"
+    ]
   },
   "authors": [
     {
