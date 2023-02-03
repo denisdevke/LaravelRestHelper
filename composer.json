@@ -3,8 +3,8 @@
   "description": "Rest API helper classes for laravel",
   "type": "metapackage",
   "require": {
-    "laravel/framework": ">=7.0.0",
-    "php": ">=7.1.3"
+    "php": ">=7.1.3",
+    "laravel/framework": "*"
   },
   "autoload": {
     "psr-4": {
