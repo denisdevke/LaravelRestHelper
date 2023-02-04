@@ -22,9 +22,9 @@ class ApiController extends Controller
             if(isset($this->with)){
                 if(is_array($this->with)){
                     if(sizeof($this->with)>0){
-                        $query = $this->model;
+                        $query = $this->model::query();
                         foreach($this->with as $with){
-                            $query = $query::with($with);
+                            $query = $query->with($with);
                         }
                         $data['data'] = $query->get();
                     }else $data['data'] = $this->model::all();
