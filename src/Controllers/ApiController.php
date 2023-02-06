@@ -2,6 +2,7 @@
 
 namespace Denniskemboi\LaravelRestHelper\Controllers;
 
+use Exception;
 use Illuminate\Http\Request;
 
 class ApiController extends Controller
@@ -57,7 +58,17 @@ class ApiController extends Controller
     {
         $data = [];
         try {
-            $data['data'] = $this->model::query()->find($id);
+            if(isset($this->with)){
+                if(is_array($this->with)){
+                    if(sizeof($this->with)>0){
+                        $query = $this->model::query();
+                        foreach($this->with as $with){
+                            $query = $query->with($with);
+                        }
+                        $data['data'] = $query->find($id);
+                    }else $data['data'] = $this->model::find($id);
+                }else $data['data'] = $this->model::with($this->with)->find($id);
+            }else $data['data'] = $this->model::find($id);
             $data['success']=true;
             return response()->json($data, 200);
         } catch (Exception $e) {
