@@ -7,13 +7,24 @@ use Illuminate\Http\Request;
 
 class ApiController extends Controller
 {
-     protected $model = null;
-     protected $with=[];
+    protected $model = null;
+    protected $with=[];
+    protected $name=null;
 
     public function __construct(){
         
     }
 
+    // get the name of the 
+    protected function getName(){
+        $name = "";
+        if(is_null($this->name) && is_null($this->model))
+            $name = "";
+        elseif(is_null($this->name))
+            $name = get_class($this->model);
+        else $name = $this->name;
+        return ucfirst(strtolower($name));
+    }
 
     // list all
     public function index()
@@ -47,7 +58,7 @@ class ApiController extends Controller
             $data = new $this->model();
             $data->fromReq($request);
             $data->save();
-            return response()->json(['success' => true, 'message' => 'Saved successfully', 'data'=>$data], 200);
+            return response()->json(['success' => true, 'message' => $this->getName(). ' saved successfully', 'data'=>$data], 200);
         } catch (Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 400);
         }
@@ -89,7 +100,7 @@ class ApiController extends Controller
             $rec->update();
 
             $data['success']=true;
-            $data['message'] = 'Updated successfully';
+            $data['message'] = $this->getName(). $this->getName().' updated successfully';
 
             return response()->json($data, 200);
         } catch (Exception $e) {
@@ -106,7 +117,7 @@ class ApiController extends Controller
             $rec = $this->model::query()->find($id);
             $rec->delete();
             $data['success']=true;
-            $data['message'] = 'Deleted successfully';
+            $data['message'] = $this->getName().' deleted successfully';
             return response()->json($data, 200);
         } catch (Exception $e) {
             $data['success']=false;
